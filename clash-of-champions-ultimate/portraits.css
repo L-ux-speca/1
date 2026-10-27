@@ -1,0 +1,80 @@
+/* The original JPEG/PNG bytes are kept at their native resolution. */
+.fighter-portrait {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 142px;
+  min-height: 142px;
+  width: 100%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, color-mix(in srgb, var(--portrait-accent) 12%, transparent), #101925 80%);
+}
+.portrait-original {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  image-rendering: auto;
+}
+.fighter-info .fighter-portrait {
+  width: 110px;
+  height: 130px;
+  min-height: 130px;
+  flex: 0 0 110px;
+  border-radius: 6px;
+}
+.hero-with-portrait { isolation: isolate; }
+.hero-with-portrait #homeArt { opacity: .07; }
+.hero-featured-portrait {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  height: 94%;
+  object-fit: contain;
+  object-position: right bottom;
+  pointer-events: none;
+  image-rendering: auto;
+  filter: drop-shadow(-18px 20px 35px #0009);
+}
+.hero-with-portrait::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, #0a121b96 0%, #0a121b4f 39%, transparent 74%);
+}
+.hero-with-portrait .hero-copy, .hero-with-portrait .hero-bottom { z-index: 2; }
+.home-portrait-selector { margin-top: 20px; padding: 17px 19px; background: #101a27; border: 1px solid #28394a; border-radius: 9px; }
+.home-portrait-heading { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; justify-content: space-between; padding-bottom: 12px; }
+.home-portrait-heading h3 { font-size: 20px; margin: 5px 0 0; }
+.home-portrait-heading small { color: #9eb2be; }
+.home-portrait-strip { display: grid; grid-template-columns: repeat(14, minmax(76px, 1fr)); gap: 9px; overflow-x: auto; padding: 5px 2px 12px; }
+.home-portrait-button {
+  padding: 5px;
+  min-width: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid #344351;
+  border-radius: 6px;
+  background: #151f2d;
+  transition: border-color .15s, transform .15s;
+}
+.home-portrait-button:hover { border-color: #a1f0d8; transform: translateY(-2px); }
+.home-portrait-button.selected { border-color: #79eacf; box-shadow: 0 0 0 2px #79eacf35; }
+.home-portrait-button img { width: 100%; height: 108px; object-fit: contain; image-rendering: auto; }
+.home-portrait-button span { font-size: 10px; padding-top: 5px; text-align: center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+@media (max-width: 950px) {
+  .home-portrait-strip { grid-template-columns: repeat(14, 88px); }
+  .hero-featured-portrait { width: 66%; }
+}
+@media (max-width: 620px) {
+  .hero-featured-portrait { width: 72%; height: 83%; opacity: .72; }
+  .hero-with-portrait::after { background: linear-gradient(90deg, #0a121bc7 0%, #0a121b6b 45%, transparent); }
+  .fighter-portrait { height: 105px; min-height: 105px; }
+  .home-portrait-selector { padding: 14px 10px; }
+}
